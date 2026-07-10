@@ -8,6 +8,20 @@ const { isFilPiloteElectricalHeater } = require('../../lib/helpers/overkiz-devic
 
 class HeaterDevice extends CozyTouchDevice {
 
+  async onInit() {
+    const store = this.getStore();
+    if (store.protocol === 'overkiz' && isFilPiloteElectricalHeater(store)) {
+      const modeValues = [
+        { id: 'off', title: { en: 'Off', fr: 'Arrêt' } },
+        { id: 'manual', title: { en: 'Comfort', fr: 'Confort' } },
+        { id: 'eco_plus', title: { en: 'Eco', fr: 'Éco' } },
+      ];
+      await this.setCapabilityOptions('cozytouch_heating_mode', { values: modeValues });
+    }
+
+    await super.onInit();
+  }
+
   _createHandler(store, data) {
     const ctx = this._buildHandlerContext(store, data);
     if (this._protocol === 'overkiz') {

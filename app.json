@@ -49,8 +49,8 @@
     {
       "id": "heater",
       "name": {
-        "en": "Heater / Boiler",
-        "fr": "Chauffage / Chaudière"
+        "en": "Heater / Boiler / Fil pilote",
+        "fr": "Chauffage / Chaudière / Fil pilote"
       },
       "class": "heater",
       "capabilities": [

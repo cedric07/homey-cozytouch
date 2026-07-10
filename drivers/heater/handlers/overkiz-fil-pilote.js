@@ -7,10 +7,11 @@ const {
 } = require('../../../lib/constants/overkiz-mappings');
 
 /**
- * Overkiz handler for Atlantic fil pilote interfaces (AtlanticElectricalHeaterIOComponent).
+ * Overkiz handler for Atlantic fil pilote IO modules (AtlanticElectricalHeaterIOComponent).
  *
- * These modules only accept setHeatingLevel (off, comfort, eco, frostprotection…).
- * setHeatingOnOffState and setHeatingTargetTemperature are not supported.
+ * Controls fil-pilote appliances (radiators, towel dryers, etc.) via setHeatingLevel
+ * (off, comfort, eco, frostprotection…). setHeatingOnOffState and setHeatingTargetTemperature
+ * are not supported on the IO module.
  */
 
 class FilPiloteOverkizHandler {
