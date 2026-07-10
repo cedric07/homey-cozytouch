@@ -3,12 +3,14 @@
 const CozyTouchDriver = require('../../lib/CozyTouchDriver');
 const CozyTouchAPI = require('../../lib/CozyTouchAPI');
 const OverkizAPI = require('../../lib/OverkizAPI');
+const { isAdjustableSetpointElectricalHeater } = require('../../lib/helpers/overkiz-device');
 
 class TowelRackDriver extends CozyTouchDriver {
 
   _filterDevices(allDevices) {
     return allDevices.filter((dev) => {
       if (dev._protocol === 'overkiz') {
+        if (isAdjustableSetpointElectricalHeater(dev)) return false;
         const overkizApi = new OverkizAPI({});
         const type = overkizApi.getDeviceType(dev);
         return type === 'TOWEL_RACK' || type === 'HEATER';
